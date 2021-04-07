@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include <vector>
 using namespace std;
 
 
@@ -9,7 +8,7 @@ int main()
 	cout << "Enter the number of numbers in array " << endl;
 	cin >> n;
 	int* bbl= new int[n];
-	srand(time(NULL));
+	srand(0);// time(NULL));
 	int i = 0;
 	//Filling array of random numbers in the range from -50 to 50
 	for  (i; i < n; i++)
@@ -18,21 +17,48 @@ int main()
 		cout << bbl[i] << " ";
 	}
 	cout << endl;
-	i = 0;
-	int j = 0;
+	int m;
+	bool ifsp=false; 
 	for (int i = 0; i < n - 1; i++)
 	{
-		for (j=0; j < n - 1 - i; j++)
+		ifsp = false;
+		for (int j = 0; j < n - 1 - i; j++)
 		{
 			if (bbl[j] > bbl[j + 1])
 			{
 				swap(bbl[j], bbl[j + 1]);
+				ifsp = true;
 			}
-		}		
+		}
+		for (int l = 0; l < n; l++)
+		{
+			cout << bbl[l] << " ";
+		}
+		cout << endl;
+		if (ifsp == false)
+		{
+			break;
+		}
+		else 
+		{
+			for (int k = n-i-1; k > 1; k--)
+			{
+				if (bbl[k] < bbl[k - 1])
+				{
+					swap(bbl[k], bbl[k - 1]);
+				}
+			}
+		}
+		for (int l = 0; l < n; l++)
+		{
+			cout << bbl[l] << " ";
+		}
+		cout << endl;
 	}
-	for (i = 0; i < n; i++)
+	for (int l = 0; l < n; l++)
 	{
-		cout << bbl[i] << " ";
+		cout << bbl[l] << " ";
 	}
+	cout << endl;
 	return 0;
 }
